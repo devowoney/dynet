@@ -25,13 +25,13 @@ def build_components(cfg: Mapping[str, Any]) -> tuple[Any, Any, Any]:
 if hydra is not None:
 
     @hydra.main(version_base=None, config_path="configs", config_name="config")
-    def main(cfg):
+    def main(cfg: Mapping[str, Any]) -> None:
         trainer, model, datamodule = build_components(cfg)
         trainer.fit(model=model, datamodule=datamodule)
 
 else:
 
-    def main(cfg=None):
+    def main(cfg: Any = None) -> None:
         raise ModuleNotFoundError(
             "hydra-core is required to run dynet.train.main; install requirements first"
         )

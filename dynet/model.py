@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 try:
     import pytorch_lightning as pl
     import torch
@@ -39,25 +41,25 @@ class MLPRegressor(_LightningModule):
         )
         self.loss_fn = nn.MSELoss()
 
-    def forward(self, x):
+    def forward(self, x: Any) -> Any:
         if self.net is None:
             raise ModuleNotFoundError("torch and pytorch-lightning are required")
         return self.net(x)
 
-    def training_step(self, batch, batch_idx):
+    def training_step(self, batch: Any, batch_idx: int) -> Any:
         x, y = batch
         preds = self(x)
         loss = self.loss_fn(preds, y)
         self.log("train_loss", loss, prog_bar=True)
         return loss
 
-    def validation_step(self, batch, batch_idx):
+    def validation_step(self, batch: Any, batch_idx: int) -> None:
         x, y = batch
         preds = self(x)
         loss = self.loss_fn(preds, y)
         self.log("val_loss", loss, prog_bar=True)
 
-    def configure_optimizers(self):
+    def configure_optimizers(self) -> Any:
         if torch is None:
             raise ModuleNotFoundError("torch and pytorch-lightning are required")
         return torch.optim.Adam(self.parameters(), lr=self.hparams.learning_rate)

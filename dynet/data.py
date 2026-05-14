@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import math
-from typing import Optional
+from typing import Any, Optional
 
 try:
     import torch
@@ -54,12 +54,12 @@ class SineWaveDataModule(_LightningDataModule):
             self._train_dataset = self._build_dataset(self.train_size)
             self._val_dataset = self._build_dataset(self.val_size)
 
-    def train_dataloader(self):
+    def train_dataloader(self) -> Any:
         if DataLoader is None or self._train_dataset is None:
             raise RuntimeError("Call setup('fit') after installing torch/lightning")
         return DataLoader(self._train_dataset, batch_size=self.batch_size, shuffle=True)
 
-    def val_dataloader(self):
+    def val_dataloader(self) -> Any:
         if DataLoader is None or self._val_dataset is None:
             raise RuntimeError("Call setup('fit') after installing torch/lightning")
         return DataLoader(self._val_dataset, batch_size=self.batch_size)
