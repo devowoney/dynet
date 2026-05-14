@@ -1,0 +1,8 @@
+defaults:
+  - data: netcdf_zarr
+  - model: netcdf_zarr
+  - trainer: default
+  - _self_
+
+seed: 42
+
