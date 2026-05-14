@@ -1,0 +1,5 @@
+_target_: dynet.data.SineWaveDataModule
+batch_size: 32
+train_size: 512
+val_size: 128
+noise_std: 0.05

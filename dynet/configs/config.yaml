@@ -1,0 +1,8 @@
+defaults:
+  - data: sine
+  - model: mlp
+  - trainer: default
+  - _self_
+
+seed: 42
+project: dynet

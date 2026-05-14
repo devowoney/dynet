@@ -1,0 +1,6 @@
+_target_: pytorch_lightning.Trainer
+max_epochs: 5
+enable_checkpointing: false
+logger: false
+enable_progress_bar: false
+deterministic: true

@@ -1,0 +1,3 @@
+_target_: dynet.model.MLPRegressor
+hidden_dim: 64
+learning_rate: 0.001
