@@ -5,7 +5,7 @@ Dev repository: ML-based dynamical system emulator
 
 This repository now includes a minimal Hydra + PyTorch Lightning setup:
 
-- Hydra config tree at `/home/runner/work/dynet/dynet/dynet/configs`
+- Hydra config tree at `dynet/configs`
 - Synthetic data module: `dynet.data.SineWaveDataModule`
 - Lightning model: `dynet.model.MLPRegressor`
 - Training entrypoint: `python -m dynet.train`

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Mapping, Tuple
+from typing import Any, Mapping
 
 try:
     import hydra
@@ -12,7 +12,7 @@ except ModuleNotFoundError:  # pragma: no cover - optional dependency guard
     instantiate = None
 
 
-def build_components(cfg: Mapping[str, Any]) -> Tuple[Any, Any, Any]:
+def build_components(cfg: Mapping[str, Any]) -> tuple[Any, Any, Any]:
     if instantiate is None:
         raise ModuleNotFoundError("hydra-core is required to build components")
 
