@@ -43,11 +43,10 @@ class NetCDFZarrForecastModule(L.LightningModule):
         return self._step(batch, "train")
 
     def validation_step(self, batch: tuple[torch.Tensor, torch.Tensor], batch_idx: int) -> torch.Tensor:
-        self._step(batch, "val")
+        return self._step(batch, "val")
 
     def test_step(self, batch: tuple[torch.Tensor, torch.Tensor], batch_idx: int) -> torch.Tensor:
-        self._step(batch, "test")
+        return self._step(batch, "test")
 
     def configure_optimizers(self) -> torch.optim.Optimizer:
         return torch.optim.Adam(self.parameters(), lr=self.lr)
-

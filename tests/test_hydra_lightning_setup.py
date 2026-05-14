@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-class TestScaffoldFiles(unittest.TestCase):
+class TestProjectStructure(unittest.TestCase):
     def test_required_files_exist(self) -> None:
         expected = [
             ROOT / "configs" / "config.yaml",
@@ -39,4 +39,3 @@ class TestManualDataModuleCore(unittest.TestCase):
         x, y = ds[0]
         self.assertEqual(tuple(x.shape), (3, 2))
         self.assertEqual(tuple(y.shape), (2, 2))
-

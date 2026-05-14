@@ -8,4 +8,4 @@ batch_size: 32
 num_workers: 0
 val_ratio: 0.1
 test_ratio: 0.1
-
+split_seed: 42

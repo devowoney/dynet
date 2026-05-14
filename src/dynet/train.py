@@ -46,10 +46,12 @@ def infer_input_dim(data_cfg: DataConfig) -> int:
 
 @hydra.main(version_base=None, config_path="../../configs", config_name="config")
 def main(cfg) -> None:
+    L.seed_everything(int(cfg.seed), workers=True)
     data_cfg = DataConfig(**OmegaConf.to_container(cfg.data, resolve=True))
     model_cfg = ModelConfig(**OmegaConf.to_container(cfg.model, resolve=True))
     trainer_cfg = TrainerConfig(**OmegaConf.to_container(cfg.trainer, resolve=True))
 
+    data_cfg.split_seed = int(cfg.seed)
     data_cfg.path = to_absolute_path(data_cfg.path)
     datamodule = ManualDataModule(data_cfg)
     model = NetCDFZarrForecastModule(
@@ -71,4 +73,3 @@ def main(cfg) -> None:
 
 if __name__ == "__main__":
     main()
-
